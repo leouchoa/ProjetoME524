@@ -1,5 +1,10 @@
 ###### Preliminares
 
+
+
+
+
+
 SQL (Structured Query Langague ) é uma linguagem padrão utilizada para acessar e manipular bancos de dados mantidos em RDBMS (relational database management system).
 
 Este guia tem como propósito auxiliar usuários de Linux e Windows a somente criar banco de dados, acessá-los e manipulá-los (neste caso utilizando a linguagem R via pacote RSQLite) basicamente.
@@ -8,7 +13,17 @@ Para usuaríos de Windows é necessário ter o pacote sqlite3 instalado. Instala
 
 Para usuários de Windows, a maneira recomendável de proceder é ir ao site "https://sqlite.org/" na parte Download e baixar o arquivo "sqlite-tools-win32-x86-3130000.zip", em Precompiled Binaries for Windows. Em seguida, copie o arquivo sqlite3.exe para a pasta em que os dados estão. Por fim, abra o prompt de comando e vá até a diretório onde estão os dados utilizando o comando "cd".
 
+
+
+
+
+
 ######## Criando o bando de dados com sqlite3
+
+
+
+
+
 
 Neste momento vamos utilizar o sqlite3 para criar o banco de dados. A sintaxe é a mesma tanto para os usuários de Windows quanto para os de Linux.
 Após descompactar os dados utilize
@@ -29,7 +44,16 @@ para dizer que o delimitador é a vírgula. Finalmente,
 
 deverá importar os dados do arquivo train.csv para o banco de dados binário nomedoarquivo.sqlite3, finalizando a criação  do arquivo em sqlite3.
 
-##### Utilizando o Rstudio para ter acesso ao banco de dados
+
+
+
+
+##### Utilizando o Rstudio para ter acesso ao banco de dados #########
+
+
+
+
+
 
 Primeiramente, ao abrir o Rstudio, instale o pacote RSQLite e carregue-o.
 
@@ -41,7 +65,7 @@ Em seguida, aponte ao RStudio o diretório onde está o seu novo banco de dados 
 
 e crie uma conexão entre o Rstudio e o seu banco de dados utilizando a seguinte linha de comando.
 
-> connection = dbConnect(SQLite(), nomedoarquivo)
+> connection = dbConnect(SQLite(), "nomedoarquivo.sqlite3")
 
 Por fim, para obter os dados em um determinado padrão use
 
