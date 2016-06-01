@@ -1,0 +1,56 @@
+###### Preliminares
+
+SQL (Structured Query Langague ) é uma linguagem padrão utilizada para acessar e manipular bancos de dados mantidos em RDBMS (relational database management system).
+
+Este guia tem como propósito auxiliar usuários de Linux e Windows a somente criar banco de dados, acessá-los e manipulá-los (neste caso utilizando a linguagem R via pacote RSQLite) basicamente.
+
+Para usuaríos de Windows é necessário ter o pacote sqlite3 instalado. Instalado o pacote deve-se, agora, ir ao local em que o dados estão, pelo terminal, e criar o banco de dados binário pelo comando sqlite3.
+
+Para usuários de Windows, a maneira recomendável de proceder é ir ao site "https://sqlite.org/" na parte Download e baixar o arquivo "sqlite-tools-win32-x86-3130000.zip", em Precompiled Binaries for Windows. Em seguida, copie o arquivo sqlite3.exe para a pasta em que os dados estão. Por fim, abra o prompt de comando e vá até a diretório onde estão os dados utilizando o comando "cd".
+
+######## Criando o bando de dados com sqlite3
+
+Neste momento vamos utilizar o sqlite3 para criar o banco de dados. A sintaxe é a mesma tanto para os usuários de Windows quanto para os de Linux.
+Após descompactar os dados utilize
+
+$ sqlite3 train.csv nomedoarquivo
+
+para criar o banco de dados. Em seguida devemos especificar quais são as opções de leitura dos dados, que são
+
+> .header on
+
+para especificar que temos um header e
+
+> .separator ","
+
+para dizer que o delimitador é a vírgula. Finalmente,
+
+> .import train.csv nomedoarquivo
+
+deverá importar os dados do arquivo train.csv para o banco de dados binário nomedoarquivo.sqlite3, finalizando a criação  do arquivo em sqlite3.
+
+##### Utilizando o Rstudio para ter acesso ao banco de dados
+
+Primeiramente, ao abrir o Rstudio, instale o pacote RSQLite e carregue-o.
+
+> require(RSQLite)
+
+Em seguida, aponte ao RStudio o diretório onde está o seu novo banco de dados nomedoarquivo.sqlite3 com
+
+> setwd("~/caminhoparaoarquivo")
+
+e crie uma conexão entre o Rstudio e o seu banco de dados utilizando a seguinte linha de comando.
+
+> connection = dbConnect(SQLite(), nomedoarquivo)
+
+Por fim, para obter os dados em um determinado padrão use
+
+> dados_do_sql = dbGetQuery(con = connection, "Padrão de Queries do SQL")
+
+para armazenar os dados. Como exemplo, faça
+
+> dados_do_sql = dbGetQuery(con = connection, "SELECT * FROM nomedoarquivo LIMIT 2")
+
+para armazenar todas as colunas das 2 primeiras linhas do banco de dados nomedoarquivo.sqlite3.
+
+Para conhecer mais queries da linguagem sql dirija-se, por exemplo, ao site : //www.w3schools.com/sql/default.asp.
