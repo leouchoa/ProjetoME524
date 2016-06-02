@@ -28,7 +28,7 @@ Para usuários de Windows, a maneira recomendável de proceder é ir ao site "ht
 Neste momento vamos utilizar o sqlite3 para criar o banco de dados. A sintaxe é a mesma tanto para os usuários de Windows quanto para os de Linux.
 Após descompactar os dados utilize
 
-$ sqlite3 train.csv nomedoarquivo
+$ sqlite3  nomedoarquivo.sqlite3
 
 para criar o banco de dados. Em seguida devemos especificar quais são as opções de leitura dos dados, que são
 
