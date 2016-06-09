@@ -73,8 +73,10 @@ Por fim, para obter os dados em um determinado padrão use
 
 para armazenar os dados. Como exemplo, faça
 
-> dados_do_sql = dbGetQuery(con = connection, "SELECT * FROM nomedoarquivo LIMIT 2")
+> dados_do_sql = dbGetQuery(con = connection, "SELECT * FROM nomedoarquivo RANDOM() % 10 = 0 LIMIT 2")
 
-para armazenar todas as colunas das 2 primeiras linhas do banco de dados nomedoarquivo.sqlite3.
+para armazenar todas as colunas das 2 primeiras linhas (aleatoriamente) do banco de dados nomedoarquivo.sqlite3.
+
+
 
 Para conhecer mais queries da linguagem sql dirija-se, por exemplo, ao site : //www.w3schools.com/sql/default.asp.
